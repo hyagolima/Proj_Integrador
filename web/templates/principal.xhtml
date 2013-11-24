@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Animal Watch</title>
+    </h:head>
+
+    <h:body>
+        
+<div id="top" class="top">               
+            <h:form>
+        <p:menubar>
+            <p:menuitem value="Home" url="/faces/templates/home.xhtml" />
+            
+            <p:submenu label="Animal">
+            <p:menuitem value="Novo" url="/faces/templates/Animal/CreateAnimal.xhtml"  />
+            <p:separator />
+            <p:menuitem value="Listar" url="/faces/templates/Animal/ListAnimal.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Editar" url="/faces/templates/Animal/EditAnimal.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Excluir" url="/faces/templates/Animal/ExcluirAnimal.xhtml"  />
+            </p:submenu>
+            
+            <p:submenu label="Refeiçao">
+               <p:menuitem value="Novo" url="/faces/templates/Refeicao/CreateRefeicao.xhtml"  />
+               <p:separator />
+            <p:menuitem value="Listar" url="/faces/templates/Refeicao/ListRefeicao.xhtml"  /> 
+             <p:separator />
+            <p:menuitem value="Editar" url="/faces/templates/Refeicao/EditRefeicao.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Excluir" url="/faces/templates/Refeicao/ExcluirRefeicao.xhtml"  />
+             </p:submenu>
+            
+            <p:submenu label="Canil">
+                <p:menuitem value="Novo" url="/faces/templates/Canil/CreateCanil.xhtml"  />
+                <p:separator />
+            <p:menuitem value="Listar" url="/faces/templates/Canil/ListCanil.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Editar" url="/faces/templates/Canil/EditCanil.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Excluir" url="/faces/templates/Canil/ExcluirCanil.xhtml"  />
+                 </p:submenu>
+            
+            <p:submenu label="Camera">
+                <p:menuitem value="Novo" url="/faces/templates/Camera/CreateCamera.xhtml"  />
+                <p:separator />
+            <p:menuitem value="Listar" url="/faces/templates/Camera/ListCamera.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Editar" url="/faces/templates/Camera/EditCamera.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Excluir" url="/faces/templates/Camera/ExcluirCamera.xhtml"  />
+                 </p:submenu>
+            
+            <p:submenu label="Microfone">
+                <p:menuitem value="Novo" url="/faces/templates/Microfone/CreateMicrofone.xhtml"  />
+                <p:separator />
+            <p:menuitem value="Listar" url="/faces/templates/Microfone/ListMicrofone.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Editar" url="/faces/templates/Microfone/EditMicrofone.xhtml"  />
+             <p:separator />
+            <p:menuitem value="Excluir" url="/faces/templates/Microfone/ExcluirMicrofone.xhtml"  />
+                 </p:submenu>
+            
+            <p:submenu label="Status">
+            <p:menuitem value="Listar" url="#"  />
+                 </p:submenu>
+            
+            <p:submenu label="Saude">
+            <p:menuitem value="Coracao" url="#"  />
+                 </p:submenu>
+            
+            <p:submenu label="Foto">
+            <p:menuitem value="Listar" url="#"  />
+                 </p:submenu>
+            
+            <p:submenu label="Video">
+            <p:menuitem value="Listar" url="#"  />
+                 </p:submenu>
+            
+            <p:menuitem value="Veterinario" url="#" />
+            <p:menuitem value="Shop" url="#" />
+            <p:menuitem value="Mais" url="#" />
+            <p:menuitem value="Ajuda" url="#" />
+            <p:menuitem value="Sair" url="/faces/templates/login.xhtml" />
+        </p:menubar>
+</h:form>
+</div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">
+                oi
+            </ui:insert>
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">
+            by Tiago Lima
+        <br> </br>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAnimalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_idAnimal}" for="idAnimal" />
+                    <h:inputText id="idAnimal" value="#{animalController.selected.idAnimal}" title="#{bundle.CreateAnimalTitle_idAnimal}" />
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{animalController.selected.nome}" title="#{bundle.CreateAnimalTitle_nome}" required="true" requiredMessage="#{bundle.CreateAnimalRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_tipoAnimal}" for="tipoAnimal" />
+                    <h:inputText id="tipoAnimal" value="#{animalController.selected.tipoAnimal}" title="#{bundle.CreateAnimalTitle_tipoAnimal}" required="true" requiredMessage="#{bundle.CreateAnimalRequiredMessage_tipoAnimal}"/>
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_idade}" for="idade" />
+                    <h:inputText id="idade" value="#{animalController.selected.idade}" title="#{bundle.CreateAnimalTitle_idade}" required="true" requiredMessage="#{bundle.CreateAnimalRequiredMessage_idade}"/>
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_peso}" for="peso" />
+                    <h:inputText id="peso" value="#{animalController.selected.peso}" title="#{bundle.CreateAnimalTitle_peso}" required="true" requiredMessage="#{bundle.CreateAnimalRequiredMessage_peso}"/>
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_sexo}" for="sexo" />
+                    <h:inputText id="sexo" value="#{animalController.selected.sexo}" title="#{bundle.CreateAnimalTitle_sexo}" required="true" requiredMessage="#{bundle.CreateAnimalRequiredMessage_sexo}"/>
+                    <h:outputLabel value="#{bundle.CreateAnimalLabel_idCpf}" for="idCpf" />
+                    <h:selectOneMenu id="idCpf" value="#{animalController.selected.idCpf}" title="#{bundle.CreateAnimalTitle_idCpf}" required="true" requiredMessage="#{bundle.CreateAnimalRequiredMessage_idCpf}">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{animalController.create}" value="#{bundle.CreateAnimalSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{animalController.prepareList}" value="#{bundle.CreateAnimalShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAnimalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

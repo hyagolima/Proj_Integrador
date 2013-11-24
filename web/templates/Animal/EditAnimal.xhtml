@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+   
+    <ui:define name="content">
+  <h:form>
+                 <p:panel header="Editar Animal">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Codigo Animal:" for="idAnimal" />
+                    <h:inputText id="idAnimal" value="#{animalController.selected.idAnimal}" />
+                    <h:outputLabel value="Nome:" for="nome" />
+                    <h:inputText id="nome" value="#{animalController.selected.nome}" title="#{bundle.EditAnimalTitle_nome}" required="true" requiredMessage="#{bundle.EditAnimalRequiredMessage_nome}"/>
+                    <h:outputLabel value="Animal:" for="tipoAnimal" />
+                    <h:inputText id="tipoAnimal" value="#{animalController.selected.tipoAnimal}" title="#{bundle.EditAnimalTitle_tipoAnimal}" required="true" requiredMessage="#{bundle.EditAnimalRequiredMessage_tipoAnimal}"/>
+                    <h:outputLabel value="Idade:" for="idade" />
+                    <h:inputText id="idade" value="#{animalController.selected.idade}" title="#{bundle.EditAnimalTitle_idade}" required="true" requiredMessage="#{bundle.EditAnimalRequiredMessage_idade}"/>
+                    <h:outputLabel value="Peso:" for="peso" />
+                    <h:inputText id="peso" value="#{animalController.selected.peso}" title="#{bundle.EditAnimalTitle_peso}" required="true" requiredMessage="#{bundle.EditAnimalRequiredMessage_peso}"/>
+                       <h:outputLabel value="Sexo:" for="sexo" />
+                    <h:selectOneMenu value="#{animalController.selected.sexo}"> 
+                        <f:selectItem itemValue="Femea" itemLabel="Femea" />
+                        <f:selectItem itemValue="Macho" itemLabel="Macho" /> 
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Codigo Dono" for="idCpf" />
+                    <h:selectOneMenu id="idCpf" value="#{animalController.selected.idCpf}" title="#{bundle.EditAnimalTitle_idCpf}" required="true" requiredMessage="#{bundle.EditAnimalRequiredMessage_idCpf}">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                
+                 <f:facet name="footer">
+                        <p:commandButton actionListener="#{animalController.update}" value="Salvar" ajax="false"/>
+                        <p:commandButton actionListener="#" value="Cancelar" ajax="false"/>
+                           </f:facet>
+                
+                 </p:panel>
+      
+            </h:form>
+    </ui:define>
+
+</ui:composition>

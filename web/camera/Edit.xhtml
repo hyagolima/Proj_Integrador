@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCameraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCameraLabel_idCamera}" for="idCamera" />
+                    <h:inputText id="idCamera" value="#{cameraController.selected.idCamera}" title="#{bundle.EditCameraTitle_idCamera}" />
+                    <h:outputLabel value="#{bundle.EditCameraLabel_posicao}" for="posicao" />
+                    <h:inputText id="posicao" value="#{cameraController.selected.posicao}" title="#{bundle.EditCameraTitle_posicao}" required="true" requiredMessage="#{bundle.EditCameraRequiredMessage_posicao}"/>
+                    <h:outputLabel value="#{bundle.EditCameraLabel_ligado}" for="ligado" />
+                    <h:inputText id="ligado" value="#{cameraController.selected.ligado}" title="#{bundle.EditCameraTitle_ligado}" required="true" requiredMessage="#{bundle.EditCameraRequiredMessage_ligado}"/>
+                    <h:outputLabel value="#{bundle.EditCameraLabel_idCpf}" for="idCpf" />
+                    <h:selectOneMenu id="idCpf" value="#{cameraController.selected.idCpf}" title="#{bundle.EditCameraTitle_idCpf}" required="true" requiredMessage="#{bundle.EditCameraRequiredMessage_idCpf}">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{cameraController.update}" value="#{bundle.EditCameraSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCameraViewLink}"/>
+                <br />
+                <h:commandLink action="#{cameraController.prepareList}" value="#{bundle.EditCameraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCameraIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

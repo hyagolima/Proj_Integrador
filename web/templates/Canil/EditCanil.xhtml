@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:define name="content">
+        <h:form>
+                 <p:panel header="Editar Canil">
+            <h:panelGrid columns="2">  
+                 <h:outputLabel value="Codigo Canil:" for="idCanil" />
+            <h:inputText id="idCanil" value="#{canilController.selected.idCanil}" required="true"/>
+            
+                <h:outputLabel value="Nome Canil:" for="nomeCanil" />
+            <h:inputText id="nome" value="#{canilController.selected.nome}" required="true"/>
+            <h:outputLabel value="Trava:" for="trava" />
+                         <h:selectOneMenu value="#{canilController.selected.trava}"> 
+                        <f:selectItem itemValue="Ligada" itemLabel="Ligada" />
+                        <f:selectItem itemValue="Desligada" itemLabel="Desligada" /> 
+                    </h:selectOneMenu>
+             <h:outputLabel value="Animal:" for="idAnimal" />
+             <h:selectOneMenu id="idAnimal" value="#{canilController.selected.idAnimal}" required="true">
+                        <f:selectItems value="#{animalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+            </h:panelGrid>
+                           <f:facet name="footer">
+                            <p:commandButton actionListener="#{canilController.update}" value="Salvar" ajax="false"/>
+                            <p:commandButton actionListener="#" value="Cancelar" ajax="false"/>
+                        </f:facet>
+                     </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

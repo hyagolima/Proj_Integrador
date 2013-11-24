@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMicrofoneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMicrofoneEmpty}" rendered="#{microfoneController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{microfoneController.items.rowCount > 0}">
+                    <h:outputText value="#{microfoneController.pagination.pageFirstItem + 1}..#{microfoneController.pagination.pageLastItem + 1}/#{microfoneController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{microfoneController.previous}" value="#{bundle.Previous} #{microfoneController.pagination.pageSize}" rendered="#{microfoneController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{microfoneController.next}" value="#{bundle.Next} #{microfoneController.pagination.pageSize}" rendered="#{microfoneController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{microfoneController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicrofoneTitle_idMicrofone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMicrofone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicrofoneTitle_posicao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.posicao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicrofoneTitle_ligado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ligado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMicrofoneTitle_idCpf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCpf}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{microfoneController.prepareView}" value="#{bundle.ListMicrofoneViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{microfoneController.prepareEdit}" value="#{bundle.ListMicrofoneEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{microfoneController.destroy}" value="#{bundle.ListMicrofoneDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{microfoneController.prepareCreate}" value="#{bundle.ListMicrofoneCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMicrofoneIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

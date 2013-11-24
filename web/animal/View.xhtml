@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAnimalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAnimalLabel_idAnimal}"/>
+                    <h:outputText value="#{animalController.selected.idAnimal}" title="#{bundle.ViewAnimalTitle_idAnimal}"/>
+                    <h:outputText value="#{bundle.ViewAnimalLabel_nome}"/>
+                    <h:outputText value="#{animalController.selected.nome}" title="#{bundle.ViewAnimalTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewAnimalLabel_tipoAnimal}"/>
+                    <h:outputText value="#{animalController.selected.tipoAnimal}" title="#{bundle.ViewAnimalTitle_tipoAnimal}"/>
+                    <h:outputText value="#{bundle.ViewAnimalLabel_idade}"/>
+                    <h:outputText value="#{animalController.selected.idade}" title="#{bundle.ViewAnimalTitle_idade}"/>
+                    <h:outputText value="#{bundle.ViewAnimalLabel_peso}"/>
+                    <h:outputText value="#{animalController.selected.peso}" title="#{bundle.ViewAnimalTitle_peso}"/>
+                    <h:outputText value="#{bundle.ViewAnimalLabel_sexo}"/>
+                    <h:outputText value="#{animalController.selected.sexo}" title="#{bundle.ViewAnimalTitle_sexo}"/>
+                    <h:outputText value="#{bundle.ViewAnimalLabel_idCpf}"/>
+                    <h:outputText value="#{animalController.selected.idCpf}" title="#{bundle.ViewAnimalTitle_idCpf}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{animalController.destroyAndView}" value="#{bundle.ViewAnimalDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAnimalEditLink}"/>
+                <br />
+                <h:commandLink action="#{animalController.prepareCreate}" value="#{bundle.ViewAnimalCreateLink}" />
+                <br />
+                <h:commandLink action="#{animalController.prepareList}" value="#{bundle.ViewAnimalShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAnimalIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

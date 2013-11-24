@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMicrofoneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMicrofoneLabel_idMicrofone}"/>
+                    <h:outputText value="#{microfoneController.selected.idMicrofone}" title="#{bundle.ViewMicrofoneTitle_idMicrofone}"/>
+                    <h:outputText value="#{bundle.ViewMicrofoneLabel_posicao}"/>
+                    <h:outputText value="#{microfoneController.selected.posicao}" title="#{bundle.ViewMicrofoneTitle_posicao}"/>
+                    <h:outputText value="#{bundle.ViewMicrofoneLabel_ligado}"/>
+                    <h:outputText value="#{microfoneController.selected.ligado}" title="#{bundle.ViewMicrofoneTitle_ligado}"/>
+                    <h:outputText value="#{bundle.ViewMicrofoneLabel_idCpf}"/>
+                    <h:outputText value="#{microfoneController.selected.idCpf}" title="#{bundle.ViewMicrofoneTitle_idCpf}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{microfoneController.destroyAndView}" value="#{bundle.ViewMicrofoneDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMicrofoneEditLink}"/>
+                <br />
+                <h:commandLink action="#{microfoneController.prepareCreate}" value="#{bundle.ViewMicrofoneCreateLink}" />
+                <br />
+                <h:commandLink action="#{microfoneController.prepareList}" value="#{bundle.ViewMicrofoneShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMicrofoneIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

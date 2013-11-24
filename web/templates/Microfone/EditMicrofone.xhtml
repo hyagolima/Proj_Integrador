@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:define name="content">
+        <h:form>
+                 <p:panel header="Editar Microfone">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Codigo Microfone" for="idMicrofone" />
+            <h:inputText id="idMicrofone" value="#{microfoneController.selected.idMicrofone}" required="true"/>
+            <h:outputLabel value="Posiçao:" for="posicao" />
+            <h:inputText id="posicao" value="#{microfoneController.selected.posicao}" required="true"/>
+            <h:outputLabel value="Ligado:" for="ligado" />
+             <h:selectOneMenu value="#{microfoneController.selected.ligado}"> 
+                        <f:selectItem itemValue="Sim" itemLabel="Sim" />
+                        <f:selectItem itemValue="Nao" itemLabel="Nao" /> 
+                    </h:selectOneMenu>
+            <h:outputLabel value="Dono:" for="idCpf" />
+            <h:selectOneMenu id="idCpf" value="#{microfoneController.selected.idCpf}" required="true">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+            </h:panelGrid>
+                   <f:facet name="footer">
+                            <p:commandButton actionListener="#{microfoneController.update}" value="Salvar" ajax="false"/>
+                            <p:commandButton actionListener="#" value="Cancelar" ajax="false"/>
+                        </f:facet>
+                     </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRefeicaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRefeicaoLabel_idRefeicao}" for="idRefeicao" />
+                    <h:inputText id="idRefeicao" value="#{refeicaoController.selected.idRefeicao}" title="#{bundle.EditRefeicaoTitle_idRefeicao}" />
+                    <h:outputLabel value="#{bundle.EditRefeicaoLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{refeicaoController.selected.hora}" title="#{bundle.EditRefeicaoTitle_hora}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_hora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRefeicaoLabel_pesoRefeicao}" for="pesoRefeicao" />
+                    <h:inputText id="pesoRefeicao" value="#{refeicaoController.selected.pesoRefeicao}" title="#{bundle.EditRefeicaoTitle_pesoRefeicao}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_pesoRefeicao}"/>
+                    <h:outputLabel value="#{bundle.EditRefeicaoLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{refeicaoController.selected.descricao}" title="#{bundle.EditRefeicaoTitle_descricao}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_descricao}"/>
+                    <h:outputLabel value="#{bundle.EditRefeicaoLabel_idCanil}" for="idCanil" />
+                    <h:selectOneMenu id="idCanil" value="#{refeicaoController.selected.idCanil}" title="#{bundle.EditRefeicaoTitle_idCanil}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_idCanil}">
+                        <f:selectItems value="#{canilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{refeicaoController.update}" value="#{bundle.EditRefeicaoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRefeicaoViewLink}"/>
+                <br />
+                <h:commandLink action="#{refeicaoController.prepareList}" value="#{bundle.EditRefeicaoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRefeicaoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

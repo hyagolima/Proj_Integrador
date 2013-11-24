@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:define name="content">
+        <h:form>
+                 <p:panel header="Editar Refeiçao">
+            <h:panelGrid columns="2">  
+                <h:outputLabel value="Codigo Refeiçao" for="idRefeicao" />
+                    <h:inputText id="idRefeicao" value="#{refeicaoController.selected.idRefeicao}" title="#{bundle.EditRefeicaoTitle_idRefeicao}" />
+                    <h:outputLabel value="Agendado" for="hora" />
+                    <p:calendar value="#{refeicaoController.selected.hora}" mindate="11/11/13" maxdate="11/1/19" pattern="dd/MM/yyyy HH:mm:ss" />  
+                    
+                    <h:outputLabel value="Quilos" for="pesoRefeicao" />
+                    <h:inputText id="pesoRefeicao" value="#{refeicaoController.selected.pesoRefeicao}" title="#{bundle.EditRefeicaoTitle_pesoRefeicao}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_pesoRefeicao}"/>
+                    <h:outputLabel value="Refeiçao" for="descricao" />
+                    <h:inputText id="descricao" value="#{refeicaoController.selected.descricao}" title="#{bundle.EditRefeicaoTitle_descricao}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_descricao}"/>
+                    <h:outputLabel value="Canil" for="idCanil" />
+                    <h:selectOneMenu id="idCanil" value="#{refeicaoController.selected.idCanil}" title="#{bundle.EditRefeicaoTitle_idCanil}" required="true" requiredMessage="#{bundle.EditRefeicaoRequiredMessage_idCanil}">
+                        <f:selectItems value="#{canilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                           <f:facet name="footer">
+                           <p:commandButton actionListener="#{refeicaoController.update}" value="Salvar" ajax="false"/>
+                           <p:commandButton actionListener="#" value="Cancelar" ajax="false"/>
+                        </f:facet>
+                     </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

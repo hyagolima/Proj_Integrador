@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:define name="content">
+        <h:form>
+                 <p:panel header="Excluir Canil">
+            <h:panelGrid columns="2">  
+                <h:outputText escape="false" value="#{bundle.ListCanilEmpty}" rendered="#{canilController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{canilController.items.rowCount > 0}">
+                    <h:outputText value="#{canilController.pagination.pageFirstItem + 1}..#{canilController.pagination.pageLastItem + 1}/#{canilController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{canilController.previous}" value="#{bundle.Previous} #{canilController.pagination.pageSize}" rendered="#{canilController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{canilController.next}" value="#{bundle.Next} #{canilController.pagination.pageSize}" rendered="#{canilController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{canilController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo Canil"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCanil}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nome"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Trava"/>
+                            </f:facet>
+                            <h:outputText value="#{item.trava}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo Animal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAnimal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="/faces/templates/Canil/EditCanil.xhtml" value="Editar -"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{canilController.destroy}" value="Apagar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                
+                 </h:panelGrid>
+                           <f:facet name="footer">
+                             <h:commandButton action="/faces/templates/Canil/CreateCanil.xhtml" value="Novo" />
+                            <h:commandButton action="/faces/templates/home.xhtml" value="Home" />
+                        </f:facet>
+                     </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+             <p:panel header="Excluir Animal">
+           
+                <h:outputText escape="false" value="#{bundle.ListAnimalEmpty}" rendered="#{animalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{animalController.items.rowCount > 0}">
+                    <h:outputText value="#{animalController.pagination.pageFirstItem + 1}..#{animalController.pagination.pageLastItem + 1}/#{animalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{animalController.previous}" value="#{bundle.Previous} #{animalController.pagination.pageSize}" rendered="#{animalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{animalController.next}" value="#{bundle.Next} #{animalController.pagination.pageSize}" rendered="#{animalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{animalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo Animal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAnimal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Animal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Tipo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoAnimal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Idade"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Peso"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pexo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo Dono"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCpf}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="/faces/templates/Animal/EditAnimal.xhtml" value="Editar -"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{animalController.destroy}" value="Apagar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                        
+                <f:facet name="footer">
+                            <h:commandButton action="/faces/templates/Animal/CreateAnimal.xhtml" value="Novo" />
+                            <h:commandButton action="/faces/templates/home.xhtml" value="Home" />
+                           </f:facet>
+                </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+   <ui:define name="content">
+      <h:form styleClass="jsfcrud_list_form">
+          <p:panel header="Todas Cameras">
+              
+                <h:outputText escape="false" value="#{bundle.ListCameraEmpty}" rendered="#{cameraController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cameraController.items.rowCount > 0}">
+                    <h:outputText value="#{cameraController.pagination.pageFirstItem + 1}..#{cameraController.pagination.pageLastItem + 1}/#{cameraController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cameraController.previous}" value="#{bundle.Previous} #{cameraController.pagination.pageSize}" rendered="#{cameraController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cameraController.next}" value="#{bundle.Next} #{cameraController.pagination.pageSize}" rendered="#{cameraController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cameraController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo Animal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCamera}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCameraTitle_posicao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.posicao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCameraTitle_ligado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ligado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Codigo Dono"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCpf}"/>
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="/faces/templates/Camera/EditCamera.xhtml" value="Editar -"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cameraController.destroy}" value="Apagar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <f:facet name="footer">
+                            <h:commandButton action="/faces/templates/Camera/CreateCamera.xhtml" value="Novo" />
+                            <h:commandButton action="/faces/templates/home.xhtml" value="Home" />
+                           </f:facet>
+                </p:panel>
+            </h:form>
+    </ui:define>
+</ui:composition>

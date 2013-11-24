@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../principal.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form>
+            <p:panel header="Novo Animal">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome:" for="nomeAnimal" />
+                    <h:inputText id="nome" value="#{animalController.selected.nome}" required="true"/>
+                    <h:outputLabel value="Tipo:" for="tipoAnimal" />
+                    <h:inputText id="tipoAnimal" value="#{animalController.selected.tipoAnimal}" required="true" />
+                    <h:outputLabel value="Idade:" for="idade" />
+                    <h:inputText id="idade" value="#{animalController.selected.idade}" required="true" />
+                    <h:outputLabel value="Peso:" for="peso" />
+                    <h:inputText id="peso" value="#{animalController.selected.peso}" required="true" />
+
+                    <h:outputLabel value="Sexo:" for="sexo" />
+                    <h:selectOneMenu value="#{animalController.selected.sexo}"> 
+                        <f:selectItem itemValue="Femea" itemLabel="Femea" />
+                        <f:selectItem itemValue="Macho" itemLabel="Macho" /> 
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Dono:" for="dono" />
+                    <h:selectOneMenu id="idCpf" value="#{animalController.selected.idCpf}" required="true">
+                        <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <p:commandButton actionListener="#{animalController.create}" value="Salvar" ajax="false"/>
+                    <p:commandButton actionListener="#" value="Cancelar" ajax="false"/>
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
